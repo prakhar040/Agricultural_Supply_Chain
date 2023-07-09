@@ -42,35 +42,48 @@ const Contact = () => {
     setLoading(false);
   };
 
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1 className=" text-3xl text-blue-700">Get In Touch!</h1>
       <input
-        className=" mt-6 w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        type="text"
-        id=""
-        value={data.name}
-        onChange={(e) => setData({ ...data, name: e.target.value })}
-        placeholder="Enter Name"
-      />
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={data.name}
+              onChange={handleChange}
+              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
+              aria-required
+              required
+            />
       <input
-        className=" mt-4 w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        type="email"
-        id=""
-        value={data.email}
-        onChange={(e) => setData({ ...data, email: e.target.value })}
-        placeholder="Enter Mobile No."
-      />
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={data.email}
+              onChange={handleChange}
+              className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
+              aria-required
+              required
+            />
       <textarea
-        className=" mt-4 w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        type="message"
-        id=""
-        value={data.message}
-        onChange={(e) => setData({ ...data, message: e.target.value })}
-        cols="30"
-        rows="7"
-        placeholder="type here..."
-      />
+              name="message"
+              placeholder="Enter your message"
+              rows="10"
+              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
+              value={data.message}
+              onChange={handleChange}
+              aria-required
+              required
+            ></textarea>
       <button onClick={addContact} className=" mt-7 bg-blue-600" type="submit">
       {loading ? <TailSpin height={25} color="white" /> : "Send"}
       </button>

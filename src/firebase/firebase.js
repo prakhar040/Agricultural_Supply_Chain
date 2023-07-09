@@ -14,9 +14,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-export const contactsRef = collection(db, "contacts");
+
 
 export const usersRef = collection(db, "users");
+
+export const contactsRef = collection(db, "contacts");
 
 export const manufacturerRef = collection(db, "manufacturer");
 
